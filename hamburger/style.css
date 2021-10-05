@@ -1,0 +1,235 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    border: 1px solid #f00;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #020e17;
+    position: relative;
+    min-height: 100%;
+    color: #fff;
+}
+
+div.container {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.container h1 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+div.container div.hamburgers {
+    text-align: center;
+}
+
+button.hamburger {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    width: 48px;
+    margin: 0 1rem;
+    transition: all 0.25s ease-in-out;
+}
+
+button.hamburger>span {
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin: 0.5rem 0;
+    background-color: #fff;
+}
+
+.h-1 {
+    opacity: 0.3;
+}
+
+.h-1>span:nth-child(2) {
+    transition-timing-function: ease;
+    transition-duration: 0.25s;
+    transition-property: opacity;
+}
+
+.h-1:hover {
+    opacity: 1;
+}
+
+.h-1.hamburger-active {
+    opacity: 1;
+    transform: rotateZ(-90deg);
+}
+
+.h-1.hamburger-active>span:nth-child(1) {
+    transform: translateY(12px) rotateZ(-45deg);
+    animation: late-rotate-45 1s 0s ease 1 forwards;
+}
+
+.h-1.hamburger-active>span:nth-child(2) {
+    transition-delay: 0.25s;
+    opacity: 0;
+}
+
+.h-1.hamburger-active>span:nth-child(3) {
+    transform: translateY(-12px) rotateZ(45deg);
+    animation: late-rotate-45-mirrored 1s 0s ease 1 forwards;
+}
+
+.h-2>span {
+    transition: all 0.25s ease;
+}
+
+.h-2>span:nth-child(3) {
+    width: 40%;
+}
+
+.h-2>span:nth-child(3) {
+    transform: scaleX(-1);
+    margin-top: 0;
+    float: right;
+}
+
+.h-2:hover>span:nth-child(1) {
+    width: 40%;
+    /* add this to reverse span1 */
+    margin-left: 60%;
+}
+
+.h-2:hover>span:nth-child(3) {
+    width: 100%;
+}
+
+.h-2.hamburger-active>span:nth-child(1),
+.h-2.hamburger-active>span:nth-child(3) {
+    width: 100%;
+}
+
+.h-2.hamburger-active>span:nth-child(1) {
+    transform: translateY(12px) rotateZ(45deg);
+    /* hide instead of translate */
+    display: none;
+}
+
+.h-2.hamburger-active>span:nth-child(3) {
+    transform: translateY(-12px) rotateZ(45deg);
+}
+
+.h-2.hamburger-active>span:nth-child(2) {
+    transform: rotateZ(-45deg);
+}
+
+.h-3>span {
+    transition: all 0.35s ease-in-out;
+}
+
+.h-3:hover>span:nth-child(1) {
+    transform: translateY(24px);
+}
+
+.h-3:hover>span:nth-child(2) {
+    transform: translateY(-12px);
+}
+
+.h-3:hover>span:nth-child(3) {
+    transform: translateY(-12px);
+}
+
+.h-3.hamburger-active>span:nth-child(3) {
+    transform: translateY(-12px) rotateZ(45deg);
+}
+
+.h-3.hamburger-active>span:nth-child(1) {
+    transform: translateY(12px) rotateZ(-45deg);
+}
+
+.h-3.hamburger-active>span:nth-child(2) {
+    transform: translateY(0);
+    opacity: 0;
+}
+
+.h-4 {
+    position: relative;
+}
+
+.h-4>span {
+    transition: all 0.35s ease-in-out;
+}
+
+.h-4:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 5px solid #3aa395;
+    box-shadow: 0 0 10px 3px #3aa395, inset 0 0 10px 3px #3aa395;
+    transform: scale(0);
+}
+
+.h-4.hamburger-active:before {
+    animation: ripple-effect 0.4s 0s ease-in-out 1 forwards;
+}
+
+.h-4.hamburger-active>span {
+    background-color: #3aa395;
+}
+
+.h-4.hamburger-active>span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.h-4.hamburger-active>span:nth-child(1) {
+    transform: translateY(12px) rotateZ(135deg);
+}
+
+.h-4.hamburger-active>span:nth-child(3) {
+    transform: translateY(-12px) rotateZ(-135deg);
+}
+
+@keyframes ripple-effect {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}
+
+@keyframes late-rotate-45 {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+    50% {
+        transform: translateY(12px) rotateZ(0deg);
+    }
+    100% {
+        transform: translateY(12px) rotateZ(-45deg);
+    }
+}
+
+@keyframes late-rotate-45-mirrored {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotateZ(0deg);
+    }
+    100% {
+        transform: translateY(-12px) rotateZ(45deg);
+    }
+}
